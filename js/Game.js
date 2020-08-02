@@ -29,13 +29,13 @@ class Game {
 
   // Branches code, depending on what key player presses
   // @param {Object} e - Keydown event object
-  handleKeydown(key) {
+  handleKeydown(e) {
     if (this.ready) {
-      if (key === ArrowLeft) {
-        // token moves left
-      } else if (key === ArrowRight) {
-        // token moves right
-      } else if (key === ArrowDown) {
+      if (e.key === 'ArrowLeft') {
+        this.activePlayer.activeToken.moveLeft();
+      } else if (e.key === 'ArrowRight') {
+        this.activePlayer.activeToken.moveRight(this.board.columns);
+      } else if (e.key === 'ArrowDown') {
         // token drops
       }
     }

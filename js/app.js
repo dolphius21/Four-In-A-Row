@@ -7,5 +7,6 @@ document.querySelector('#begin-game').addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  game.handleKeydown(e.key);
+  game.handleKeydown(e);
 });
+
