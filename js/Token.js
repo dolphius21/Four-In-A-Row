@@ -25,7 +25,6 @@ class Token {
     token.setAttribute('id', this.id);
     token.setAttribute('class', 'token');
     token.style.backgroundColor = this.owner.color;
-    return token;
   }
 
   // Moves html token one column to left
@@ -43,5 +42,16 @@ class Token {
       this.htmlToken.style.left = this.offsetLeft + 76;
       this.columnLocation += 1;
     }
+  }
+
+  // Drops html token into targeted board space
+  // @param {Object} target - targeted space for dropped token
+  // @param {function} reset - the reset after the drop animation has completed
+  drop(target, reset) {
+    this.dropped = true;
+
+    $(this.htmlToken).animate({
+      top: (target.y * target.diameter)
+    }, 750, 'easeOutBounce', reset);
   }
 }
