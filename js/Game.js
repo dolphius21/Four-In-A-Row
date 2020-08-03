@@ -71,7 +71,6 @@ class Game {
     target.mark(token);
     
     if (!this.checkForWin(target)) {
-      console.log('no win');
       this.switchPlayers();
       
       if (this.activePlayer.checkTokens()) {
@@ -81,7 +80,6 @@ class Game {
           this.gameOver('No more tokens');
       }
     } else {
-      console.log('win');
       this.gameOver(`${target.owner.name} wins!`)
     }	
   }
@@ -146,9 +144,13 @@ class Game {
 
   // Switches active player.
   switchPlayers() {
-    for (let player of this.players) {
-			player.active = player.active === true ? false : true;
-    }
+    this.players.forEach(player => {
+      if (player.active === true) {
+        player.active = false;
+      } else {
+        player.active = true;
+      }
+    });
   }
 
   // Displays game over message.
